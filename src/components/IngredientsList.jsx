@@ -11,7 +11,7 @@ export default function IngredientsList(props) {
                 {props.ingredients.length>0 && <h1>Ingredients on Hand:</h1>}
                 {ingredientsListItems}
             </ul>
-            {props.ingredients.length >= 5 ?<GetRecipe setRecipeShow={props.setRecipeShow}/>: null}
+            {props.ingredients.length >= 5 ?<GetRecipe setRecipeShow={props.setRecipeShow} sectionRef={props.sectionRef} recipe={props.recipe}/>: null}
         </section>
     )
 }

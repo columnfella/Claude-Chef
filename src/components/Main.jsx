@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import IngredientsList from './IngredientsList';
 import Recipe from './Recipe';
 //boilerplate function retrieving the recipe via Mistral AI from Huggin Face 
@@ -9,6 +9,7 @@ export default function Main() {
     const [recipe, setRecipe] = useState("");
     const [isWaiting, setIsWaiting] = useState(false);
     const [recipeReceived, setRecipeReceived] = useState(false);
+    const recipeSection = useRef(null);
     
     async function getRecipeFromHG() {
         console.log("Fetching recipe with ingredients:", ingredients);
@@ -48,7 +49,11 @@ export default function Main() {
                 </button>
             </form>
             { ingredients.length > 0 && 
-            <IngredientsList ingredients={ingredients} setRecipeShow={getRecipeFromHG}/> }
+            <IngredientsList 
+            ingredients={ingredients}
+            setRecipeShow={getRecipeFromHG}
+            sectionRef={recipeSection}
+            recipe={recipe}/> }
             
             <Recipe recipe={recipe} isWaiting={isWaiting} recipeReceived={recipeReceived}/>
         </main>
