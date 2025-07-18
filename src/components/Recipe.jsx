@@ -9,7 +9,7 @@ export default function Recipe(props) {
             </div>
             }
             <section>
-            <h2>Jim Chef recommends:</h2>
+            {props.recipeReceived && <h2>Jim Chef recommends:</h2>}
                 <ReactMarkdown>{props.recipe}</ReactMarkdown>
             </section>
         </section>

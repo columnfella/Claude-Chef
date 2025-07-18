@@ -8,12 +8,14 @@ export default function Main() {
     const [ingredients, setIngredients] = useState([]);
     const [recipe, setRecipe] = useState("");
     const [isWaiting, setIsWaiting] = useState(false);
+    const [recipeReceived, setRecipeReceived] = useState(false);
     
     async function getRecipeFromHG() {
         console.log("Fetching recipe with ingredients:", ingredients);
         setIsWaiting(true);
         const recipeMarkdown = await getRecipeFromMistral(ingredients);
         setIsWaiting(false);
+        setRecipeReceived(true);
         console.log("Received recipe:", recipeMarkdown);
         setRecipe(recipeMarkdown);
     }
@@ -48,7 +50,7 @@ export default function Main() {
             { ingredients.length > 0 && 
             <IngredientsList ingredients={ingredients} setRecipeShow={getRecipeFromHG}/> }
             
-            <Recipe recipe={recipe} isWaiting={isWaiting}/>
+            <Recipe recipe={recipe} isWaiting={isWaiting} recipeReceived={recipeReceived}/>
         </main>
     )
 }
