@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import IngredientsList from './IngredientsList';
 import Recipe from './Recipe';
 //boilerplate function retrieving the recipe via Mistral AI from Huggin Face 
@@ -32,6 +32,16 @@ export default function Main() {
 
         console.log(ingredients)
     }
+
+    useEffect(() => {
+        if (recipe !== "" && recipeSection.current) {
+            recipeSection.current.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+            inline: "nearest"
+            });
+        }
+    }, [recipe]);
     
     return (
         <main>

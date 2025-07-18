@@ -5,13 +5,6 @@ export default function GetRecipe(props) {
     props.setRecipeShow();
     console.log("Recipe button clicked");
   }
-  useEffect(()=>{
-        props.sectionRef.current?.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-            inline: "nearest"     
-        })
-    }, [props.recipe])
 
   return (
     <div className="get-recipe" ref={props.sectionRef}>
