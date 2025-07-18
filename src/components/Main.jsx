@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import IngredientsList from './IngredientsList';
 import Recipe from './Recipe';
+//boilerplate function retrieving the recipe via Mistral AI from Huggin Face 
 import { getRecipeFromMistral } from '../ai.js';
 
 export default function Main() {
