@@ -31,6 +31,16 @@ main {
   padding: 30px 30px 10px;
 }
 
+.ingredients-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ingredients-list > li {
+  color: #585858;
+}
+
 .add-ingredient-form {
   display: flex;
   flex-direction: row;
@@ -107,7 +117,7 @@ main > ul > li {
   font-family: Inter, sans-serif;
   border: none;
   border-radius: 5px;
-  background-color: #df7f48;
+  background-color: #c148df;
   color: white;
   font-size: 1rem;
   cursor: pointer;
@@ -131,3 +141,62 @@ main > section {
   padding-right: 100px;
   padding-left: 100px;
 }
+
+.recipe {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  color: #475467;
+  line-height: 28px;
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+
+.recipe ul li, .recipe ol li {
+    margin-bottom: 8px;
+}
+
+/*================================from  https://loading.io/css/ ================================*/
+.lds-facebook,
+.lds-facebook div {
+  box-sizing: border-box;
+}
+.lds-facebook {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-facebook div {
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: currentColor;
+  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds-facebook div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+.lds-facebook div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+.lds-facebook div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0s;
+}
+@keyframes lds-facebook {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+  50%, 100% {
+    top: 24px;
+    height: 32px;
+  }
+}
+/*====================================================================*/

@@ -1,14 +1,17 @@
 import GetRecipe from "./GetRecipe";
 
 export default function IngredientsList(props) {
-    console.log("IngredientsList rendered");
+    const ingredientsListItems = props.ingredients.map((ingredient, index) => (
+        <li key={index}>{ingredient}</li>
+    ))
+
     return (
         <section>
-            <ul>
+            <ul className="ingredients-list">
                 {props.ingredients.length>0 && <h1>Ingredients on Hand:</h1>}
-                {props.ingredientsListItems}
+                {ingredientsListItems}
             </ul>
-            {props.ingredients.length >= 5 ?<GetRecipe />: null}
+            {props.ingredients.length >= 5 ?<GetRecipe setRecipeShow={props.setRecipeShow}/>: null}
         </section>
     )
 }

@@ -1,12 +1,21 @@
 import { useState } from 'react';
 import IngredientsList from './IngredientsList';
+import Recipe from './Recipe';
+import { getRecipeFromMistral } from '../ai.js';
 
 export default function Main() {
     const [ingredients, setIngredients] = useState([]);
+    const [recipe, setRecipe] = useState("");
+    const [isWaiting, setIsWaiting] = useState(false);
     
-    const ingredientsListItems = ingredients.map(ingredient => (
-        <li key={ingredient}>{ingredient}</li>
-    ))
+    async function getRecipeFromHG() {
+        console.log("Fetching recipe with ingredients:", ingredients);
+        setIsWaiting(true);
+        const recipeMarkdown = await getRecipeFromMistral(ingredients);
+        setIsWaiting(false);
+        console.log("Received recipe:", recipeMarkdown);
+        setRecipe(recipeMarkdown);
+    }
 
     function addIngredient(formData) {
         const newIngredient = formData.get("ingredient")
@@ -36,7 +45,9 @@ export default function Main() {
                 </button>
             </form>
             { ingredients.length > 0 && 
-            <IngredientsList ingredients={ingredients} ingredientsListItems={ingredientsListItems} /> }
+            <IngredientsList ingredients={ingredients} setRecipeShow={getRecipeFromHG}/> }
+            
+            <Recipe recipe={recipe} isWaiting={isWaiting}/>
         </main>
     )
 }
